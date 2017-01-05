@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <base href="<%BlogUrl%>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title><%EntryTitle%></title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.2.4/milligram.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<%CSSUrl%>">
+    <!--[if lte IE 8]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="<%RDFUrl%>">
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="<%RSDUrl%>">
+		<link rel="contents" href="<%SiteMapUrl%>">
+    <meta name="description" content="<%EntryExcerpt%>">
+		<meta name="author" content="<%EntryAuthor%>">
+  </head>
+  <body>
+    <header class="blog-title">
+        <div>
+          <a href="/">
+            <img src="<%ProfileImage%>">
+            <h1 id="blogTitle" title="<%BlogTitle%>"><%BlogTitle%></h1>
+          </a>
+        </div>
+        <a href="#!" id="toggleSearch" class="search-button" onclick="toggleSearch(); return false">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </a>
+        <a href="#!" id="toggleMenu" class="blog-nav-button" onclick="toggleMenu(); return false" title="Tampilkan Menu">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </a>
+        <nav id="navbar">
+          <div class="header">
+            <h4>Menu</h4>
+            <a href="#!" id="closeMenu" onclick="closeMenu(); return false" title="Tutup Menu">X</a>
+          </div>
+          <div class="menu">
+            <a href="/">Beranda</a>
+            <a href="album">Album</a>
+            <a href="sitemap">Peta Situs</a>
+          </div>
+          <div class="social">
+            <a href="javascript:;" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="javascript:;" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a href="javascript:;" target="_blank"><i class="fa fa-instagram"></i></a>
+            <a href="<%RDFUrl%>" target="_blank"><i class="fa fa-rss"></i></a>
+          </div>
+        </nav>
+        <form id="search" method="get" action="search.php">
+          <input type="text" name="search" placeholder="Cari" />
+        </form>
+    </header>
+    <main>
+      <%TrackBackAutoDiscovery%>
+      <article>
+        <header>
+          <a href="<%EntryPermalink%>">
+            <h2><%EntryTitle%></h2>
+          </a>
+          <span>
+            Oleh <a href="javascript:;"><%EntryAuthor%></a>.
+            Pada tanggal
+            <time datetime="<%EntryDateYear4%>-<%EntryDateMonth2%>-<%EntryDateDay2%>">
+              <%EntryDateDay%> <%EntryDateMonthEn%> <%EntryDateYear%>
+            </time>.
+          </span>
+        </header>
+        <p>
+          <%EntryBody%>
+          <%EntryBodyMore%>
+        </p>
+        <div class="labels">
+          <IfEntryCategory>
+            <a class="label" href="<%EntryCategoryUrl%>"><%EntryCategory%></a>
+          </IfEntryCategory>
+        </div>
+      </article>
+    </main>
+    <footer>
+      &copy; 2017, <%BlogTitle%>.
+      <em>Template</em>
+      <a href="https://github.com/wisn/reado" target="_blank">Reado</a>
+      oleh
+      <a href="https://www.nurcahyo.me/" target="_blank">Wisnu Adi Nurcahyo</a>.
+      <br>
+      Diberdayakan oleh <a href="http://www.wagomu.id/" target="_blank">WaGoMu</a>.
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        document.getElementById('navbar').style.marginRight = '0';
+      }
+      function closeMenu() {
+        document.getElementById('navbar').style.marginRight = '-310px';
+      }
+
+      document.getElementById('search').style.display = 'none';
+      function toggleSearch() {
+        var form = document.getElementById('search').style.display;
+        document.getElementById('search').style.display = form === 'none' ?
+          'block'
+        :
+          'none';
+      }
+
+      var blogTitle = document.getElementById('blogTitle');
+      if (blogTitle.innerHTML.length > 40) {
+        blogTitle.innerHTML = blogTitle.innerHTML.substr(0, 40) + "...";
+      }
+    </script>
+  </body>
+</html>
