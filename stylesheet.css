@@ -223,6 +223,15 @@ body {
             color: #e74c3c;
             border: 1px solid #e74c3c;
           }
+      body main article .sharer {
+        margin: 16px 0;
+        text-align: center;
+      }
+        body main article .sharer a {
+          display: inline-block;
+          margin: 2px 4px;
+          padding: 4px;
+        }
     body main .bottom-navigation {
       margin: 100px 0 0;
       font-size: 12pt;
@@ -239,3 +248,8 @@ body {
     font-size: 10pt;
     text-align: center;
   }
+
+#blogadd form #submit {
+  font-size: 8pt;
+  padding-top: 0;
+}
